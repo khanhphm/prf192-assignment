@@ -4,6 +4,13 @@ void addStudent(){
 
 }
 
+
+void removeStudent(){
+    int studentId;
+    scanf("%d",studentId);
+    
+}
+
 int main(){
     
     printf("MENU\n");

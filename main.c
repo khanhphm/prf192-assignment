@@ -3,7 +3,10 @@
 void addStudent(){
 
 }
+void deleteStuden(){
 
+    
+}
 int main(){
     
     printf("MENU\n");

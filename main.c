@@ -6,7 +6,7 @@ struct sinhVien{
     char tenSV[20];
     char gioiTinh[10];
     double diemSV;
-}
+};
 void addStudent(){
 
 }
@@ -39,12 +39,10 @@ int main(){
             case 1:
                 addStudent();
                 break;
-            default;
+            default:
+                break;
 
         }
 
-    }while(opt!=0)
-
-
-
+    }while(opt!=0);
 }

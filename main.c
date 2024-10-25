@@ -1,1 +1,1 @@
-printf("")
+printf("Lys ngu vcc")

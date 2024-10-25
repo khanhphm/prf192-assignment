@@ -1,1 +1,1 @@
-printf("Lys ngu vcc")
+jscnksncbhjnjfsncnj d

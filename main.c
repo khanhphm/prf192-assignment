@@ -1,5 +1,9 @@
 #include<stdio.h>
 
+void addStudent(){
+
+}
+
 int main(){
     
     printf("MENU\n");
@@ -15,7 +19,10 @@ int main(){
 
         switch(opt){
             case 1:
-                
+                addStudent();
+                break;
+            default;
+
         }
 
     }while(opt!=0)

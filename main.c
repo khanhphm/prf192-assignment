@@ -3,6 +3,10 @@
 void addStudent(){
 
 }
+void deleteStuden(){
+
+    
+}
 
 
 void removeStudent(){

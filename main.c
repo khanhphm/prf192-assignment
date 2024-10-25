@@ -1,5 +1,5 @@
 #include<stdio.h>
 
 int main(){
-    printf("Lys ngu vcc");
+    printf("khanh ngu vcl");
 }

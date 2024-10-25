@@ -1,5 +1,12 @@
 #include<stdio.h>
 
+struct sinhVien{
+    char maSV[10];
+    char hoSV[20];
+    char tenSV[20];
+    char gioiTinh[10];
+    double diemSV;
+}
 void addStudent(){
 
 }

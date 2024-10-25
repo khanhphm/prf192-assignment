@@ -2,4 +2,5 @@
 
 int main(){
     printf("khanh ngu vcl");
+    printf("tam);
 }

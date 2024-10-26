@@ -3,51 +3,26 @@
 #include<ctype.h>
 #include<stdlib.h>
 
+typedef struct sinhVien{
+    char IDStudent[10];
+    char LastName[20];
+    char firtName[10];
+    char sex[5];
+    int finalPoint;
+} SV;
 
-
-void addStudent(){
-
-}
-void editGrade(){
-
-}
-
-void editName(){
-
-}
-
-void removeStudent(){
-    int studentId;
-    scanf("%d",studentId);
-    
-}
-
-
-void sortGrade(){
-
-}
-
-void sortName(){
-
-}
-
-void printAll(){
-
-}
-void printId(){
-
-}
-
-void printGrade(){
-
-}
-
-void printAverage(){
-
-}
+void addStudent();
+void editGrade();
+void editName();
+void removeStudent();
+void sortGrade();
+void sortName();
+void printAll();
+void printId();
+void printGrade();
+void printAverage();
 
 int main(){
-    
     printf("MENU\n");
     printf(" 1. Add student\n");
     printf(" 2. Edit student grade\n");
@@ -58,9 +33,8 @@ int main(){
     printf(" 7. Print out all of list\n");
     printf(" 8. Print out list by ID\n");
     printf(" 9. Print out list by grade\n");
-    printf("10. Print out average, highest, lowest grade\n")
+    printf("10. Print out average, highest, lowest grade\n");
     printf(" Other to Exit\n");
-    
     
     int opt;
     do{
@@ -98,12 +72,50 @@ int main(){
             case 10:
                 printAverage();
                 break;
-            default;
-
+            default:
+                break;
         }
 
-    }while(opt!=0)
+    }while(opt!=0);
+}
+
+void addStudent(){
+    // Enter main part of function
+}
+void editGrade(){
+    // Enter main part of function
+}
+
+void editName(){
+    // Enter main part of function
+}
+
+void removeStudent(){
+    int studentId;
+    scanf("%d",studentId);
+    
+}
 
 
+void sortGrade(){
+    // Enter main part of function
+}
 
+void sortName(){
+    // Enter main part of function
+}
+
+void printAll(){
+    // Enter main part of function
+}
+void printId(){
+    // Enter main part of function
+}
+
+void printGrade(){
+    // Enter main part of function
+}
+
+void printAverage(){
+    // Enter main part of function
 }

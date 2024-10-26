@@ -1,4 +1,9 @@
 #include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+#include<stdlib.h>
+
+
 
 void addStudent(){
 
@@ -38,7 +43,7 @@ void printGrade(){
 }
 
 void printAverage(){
-    
+
 }
 
 int main(){
@@ -54,11 +59,12 @@ int main(){
     printf(" 8. Print out list by ID\n");
     printf(" 9. Print out list by grade\n");
     printf("10. Print out average, highest, lowest grade\n")
-    printf(" 0. Exit\n");
-
+    printf(" Other to Exit\n");
+    
     
     int opt;
     do{
+        printf("Please Choose: ");
         scanf("%d",&opt);
 
         switch(opt){

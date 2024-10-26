@@ -1,20 +1,15 @@
 #include<stdio.h>
 
-struct sinhVien{
-    char maSV[10];
-    char hoSV[20];
-    char tenSV[20];
-    char gioiTinh[10];
-    double diemSV;
-};
 void addStudent(){
 
 }
-void deleteStuden(){
+void editGrade(){
 
-    
 }
 
+void editName(){
+
+}
 
 void removeStudent(){
     int studentId;
@@ -22,13 +17,44 @@ void removeStudent(){
     
 }
 
+
+void sortGrade(){
+
+}
+
+void sortName(){
+
+}
+
+void printAll(){
+
+}
+void printId(){
+
+}
+
+void printGrade(){
+
+}
+
+void printAverage(){
+    
+}
+
 int main(){
     
     printf("MENU\n");
-    printf("1. Add student\n");
-    printf("2. Edit student\n");
-    printf("3. Remove student\n");
-    printf("4. Exit\n");
+    printf(" 1. Add student\n");
+    printf(" 2. Edit student grade\n");
+    printf(" 3. Edit student name\n");
+    printf(" 4. Remove student\n");
+    printf(" 5. Sort list by grade\n");
+    printf(" 6. Sort list by name\n");
+    printf(" 7. Print out all of list\n");
+    printf(" 8. Print out list by ID\n");
+    printf(" 9. Print out list by grade\n");
+    printf("10. Print out average, highest, lowest grade\n")
+    printf(" 0. Exit\n");
 
     
     int opt;
@@ -39,10 +65,39 @@ int main(){
             case 1:
                 addStudent();
                 break;
-            default:
+            case 2:
+                editGrade();
                 break;
+            case 3:
+                editName();
+                break;
+            case 4:
+                removeStudent();
+                break;
+            case 5:
+                sortGrade();
+                break;
+            case 6:
+                sortName();
+                break;
+            case 7:
+                printAll();
+                break;
+            case 8:
+                printId();
+                break;
+            case 9:
+                printGrade();
+                break;
+            case 10:
+                printAverage();
+                break;
+            default;
 
         }
 
-    }while(opt!=0);
+    }while(opt!=0)
+
+
+
 }

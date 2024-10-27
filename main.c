@@ -218,13 +218,11 @@ void printAverageGrade() {
     for(i=0;i<stNum;i++) {
         sum+=listSV[i].FinalPoint;
     }
-    printf("%.2f\n", sum);
-    printf("%d\n", stNum);
     printf("Average grade: %.2f\n", sum/stNum);
     system("pause");
 }
 void printHighest() {
-    //system("cls");
+    system("cls");
     float max=0.00;
     int i;
     for (i=0;i<stNum;i++) {

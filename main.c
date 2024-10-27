@@ -11,6 +11,8 @@ typedef struct sinhVien{
     int FinalPoint;
 } SV;
 
+SV listSV[];
+
 void addStudent();
 void editGrade();
 void editName();

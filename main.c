@@ -4,10 +4,10 @@
 #include<stdlib.h>
 
 typedef struct sinhVien{
-    char IDStudent[10];
-    char LastName[20];
+    char iDStudent[10];
+    char lastName[20];
     char firtName[10];
-    char sex[5];
+    char gender[5];
     int finalPoint;
 } SV;
 
@@ -21,6 +21,8 @@ void printAll();
 void printId();
 void printGrade();
 void printAverage();
+void saveToFile();
+void readFromFile();
 
 int main(){
     printf("MENU\n");

@@ -137,11 +137,8 @@ void addStudent()
     return;
 }
 
-void updateStudent()
+int searchById()
 {
-    system("cls");
-    printf("UPDATE STUDENT INFORMATION");
-    printf("\n-----------------------------------------\n");
     char id[10];
     printf("Search by ID: ");
     gets(id);
@@ -151,36 +148,50 @@ void updateStudent()
     {
         if (strcmp(listSV[i].IDStudent, id) == 0)
         {
-            break;
+            system("cls");
+            printf("STUDENT INFORMATION");
+            printf("\n-----------------------------------------\n");
+            printf("%-10s %-20s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
+            char fullName[50] = "";
+            strcat(fullName, listSV[i].FirstName);
+            strcat(fullName, " ");
+            strcat(fullName, listSV[i].LastName);
+            printf("%-10s %-20s %-8s %-10.2f\n", listSV[i].IDStudent, fullName, listSV[i].Gender, listSV[i].FinalPoint);
+            printf("\n-----------------------------------------\n");
+            return i;
         }
     }
-    if (i == stNum)
+    printf("\nID is not found!!\n");
+    return -1;
+}
+
+void updateStudent()
+{
+    system("cls");
+    printf("UPDATE STUDENT INFORMATION");
+    printf("\n-----------------------------------------\n");
+    int i = searchById();
+    if (i == -1)
     {
-        printf("\nID is not found!!\n");
         system("pause");
         return;
     }
 
     SV currentSt = listSV[i];
-    system("cls");
-    printf("UPDATE STUDENT INFORMATION");
-    printf("\n-----------------------------------------\n");
-    printf("%-10s %-20s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
-    char fullName[50] = "";
-    strcat(fullName, currentSt.FirstName);
-    strcat(fullName, " ");
-    strcat(fullName, currentSt.LastName);
-    printf("%-10s %-20s %-8s %-10.2f\n", currentSt.IDStudent, fullName, currentSt.Gender, currentSt.FinalPoint);
-    printf("\n-----------------------------------------\n");
     printf("1. Edit ID\n");
     printf("2. Edit name\n");
     printf("3. Edit gender\n");
-    int opt;
     scanf("\nChoose option: ");
+    int opt;
+
     scanf("%d", &opt);
     fflush(stdin);
     system("cls");
     printf("UPDATE STUDENT INFORMATION");
+    char fullName[50] = "";
+    strcat(fullName, currentSt.FirstName);
+    strcat(fullName, " ");
+    strcat(fullName, currentSt.LastName);
     printf("\n-----------------------------------------\n");
     printf("%-10s %-20s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
     printf("%-10s %-20s %-8s %-10.2f\n", currentSt.IDStudent, fullName, currentSt.Gender, currentSt.FinalPoint);
@@ -226,9 +237,26 @@ void updateStudent()
 
 void removeStudent()
 {
-    int studentId;
-    scanf("%d", studentId);
-    printf("%-10s %-20s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
+    system("cls");
+    printf("REMOVE STUDENT");
+    printf("\n-----------------------------------------\n");
+    int id = searchById();
+    char opt;
+    printf("Press Y to remove %s: ", listSV[id].IDStudent);
+    scanf("%c", &opt);
+    if (opt == 'y')
+    {
+        int i;
+        for (i = id; i < stNum - 1; i++)
+        {
+            listSV[i] = listSV[i + 1];
+        }
+        stNum--;
+        saveToFile();
+    }
+
+    system("pause");
+    return;
 }
 
 void sortGrade()
@@ -284,7 +312,7 @@ void saveToFile()
     int i;
     for (i = 0; i < stNum; i++)
     {
-        fprintf(file, "%s,%s,%s,%s,%.2f\n", listSV[i].IDStudent, listSV[i].LastName, listSV[i].FirstName, listSV[i].Gender, listSV[i].FinalPoint);
+        fprintf(file, "%s,%s,%s,%s,%.1f,\n", listSV[i].IDStudent, listSV[i].LastName, listSV[i].FirstName, listSV[i].Gender, listSV[i].FinalPoint);
     }
 
     fclose(file);

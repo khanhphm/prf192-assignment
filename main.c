@@ -3,6 +3,8 @@
 #include<ctype.h>
 #include<stdlib.h>
 
+const int MAX=10000;
+
 typedef struct sinhVien{
     char IDStudent[10];
     char LastName[20];
@@ -11,7 +13,7 @@ typedef struct sinhVien{
     int FinalPoint;
 } SV;
 
-SV listSV[];
+SV listSV[MAX];
 
 void addStudent();
 void editGrade();

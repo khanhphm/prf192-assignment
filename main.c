@@ -211,10 +211,91 @@ void printGrade()
 	}
 	system("pause");
 }
-
-void printAverage()
-{
+void printAverageGrade() {
+    system("cls");
+    float sum=0;
+    int i;
+    for(i=0;i<stNum;i++) {
+        sum+=listSV[i].FinalPoint;
+    }
+    printf("%.2f\n", sum);
+    printf("%d\n", stNum);
+    printf("Average grade: %.2f\n", sum/stNum);
+    system("pause");
+}
+void printHighest() {
+    //system("cls");
+    float max=0.00;
+    int i;
+    for (i=0;i<stNum;i++) {
+        if(max<listSV[i].FinalPoint) {
+            max=listSV[i].FinalPoint;
+        }
+    }
+    printf("%-10s %-30s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
+    printf("===========================================================\n");
+    for (i=0;i<stNum;i++) {
+	if (max == listSV[i].FinalPoint){
+    	char fullName[50] = "";
     
+        	strcat(fullName, listSV[i].FirstName);
+        	strcat(fullName, " ");
+        	strcat(fullName, listSV[i].LastName);
+        	printf("%-10s %-30s %-8s %-10.2f\n", listSV[i].IDStudent, fullName, listSV[i].Gender, listSV[i].FinalPoint);
+		}
+	}
+    system("pause");
+}
+void printLowest(){
+    system("cls");
+    float min=10.00;
+    int i;
+    for (i=0;i<stNum;i++) {
+        if(min>listSV[i].FinalPoint) {
+            min=listSV[i].FinalPoint;
+        }
+    }
+    printf("%-10s %-30s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
+    printf("===========================================================\n");
+    for (i=0;i<stNum;i++) {
+    	if(min==listSV[i].FinalPoint) {
+    	char fullName[50] = "";
+        	strcat(fullName, listSV[i].FirstName);
+        	strcat(fullName, " ");
+        	strcat(fullName, listSV[i].LastName);
+        	printf("%-10s %-30s %-8s %-10.2f\n", listSV[i].IDStudent, fullName, listSV[i].Gender, listSV[i].FinalPoint);
+		}
+	}
+    system("pause");
+}
+void printAverage()
+{   
+    system("cls");
+    int otp;
+    do {
+        printf("    ~ OPTION ~\n");
+        printf("1. Print out average grade\n");
+        printf("2. Print out the highest grade\n");
+        printf("3. Print out the lowest grade\n");
+        printf("0. Exit\n");
+        printf("Please choose: ");
+        scanf("%d", &otp);
+    switch (otp) {
+        case 1: 
+            printAverageGrade();
+            break;
+        case 2:
+            printHighest();
+            break;
+        case 3:
+            printLowest();
+            break;
+        default : break;
+    }
+    } while(otp!=0);
+
+    system("pause");
+
 }
 
 void saveToFile()

@@ -49,7 +49,7 @@ int main()
         printf(" 9. Print out list by grade\n");
         printf("10. Print out average, highest, lowest grade\n");
         printf(" Other to Exit\n");
-        readFromFile();
+        // readFromFile();
         printf("Please Choose: ");
         scanf("%d", &opt);
         fflush(stdin);
@@ -115,7 +115,7 @@ void addStudent()
     printf("Student %s is added successful!\n", listSV[stNum].IDStudent);
     printf("-----------------------------------------\n");
     stNum++;
-    saveToFile();
+    // saveToFile();
 
     system("pause");
 
@@ -136,15 +136,73 @@ void removeStudent()
     int studentId;
     scanf("%d", studentId);
 }
-
+void swap(SV *sv1, SV *sv2){
+    SV tam = *sv1;
+    *sv1 = *sv2;
+    *sv2 = tam;
+}
 void sortGrade()
 {
-    // Enter main part of function
+    system("cls");
+    int selectionSortGrade;
+    do{
+        printf("Do you want to sort list by grade?\n1. Yes\n2. Cancel\nYour selection: ");
+        scanf("%d", &selectionSortGrade);
+        if(selectionSortGrade != 1 && selectionSortGrade != 2){
+            system("cls");
+            printf("Your selection is inappropriate\n");
+            printf("Enter your selection again, please!\n");
+        }
+    }while(selectionSortGrade != 1 && selectionSortGrade != 2);
+    if(selectionSortGrade == 1){
+        int i, j;
+        for(i = 0 ; i < stNum -1; i++){
+            for(j = i + 1; j < stNum; j++){
+                if(listSV[i].FinalPoint < listSV[j].FinalPoint) swap(&listSV[i], &listSV[j]);
+            }
+        }
+        printf("\n-----------------------------------------\n");
+        printf("This list was sorted by grade\n");
+        printf("-----------------------------------------\n");
+    }
+    else{
+        printf("\n-----------------------------------------\n");
+        printf("The sorting list by grade was cancelled\n");
+        printf("-----------------------------------------\n");
+    }
+    system("pause");
 }
 
 void sortName()
 {
-    // Enter main part of function
+    system("cls");
+    int selectionSortName;
+    do{
+        printf("Do you want to sort list by name?\n1. Yes\n2. Cancel\nYour selection: ");
+        scanf("%d", &selectionSortName);
+        if(selectionSortName != 1 && selectionSortName != 2){
+            system("cls");
+            printf("Your selection is inappropriate\n");
+            printf("Enter your selection again, please!\n");
+        }
+    }while(selectionSortName != 1 && selectionSortName != 2);
+    if(selectionSortName == 1){
+        int i, j;
+        for(i = 0 ; i < stNum -1; i++){
+            for(j = i + 1; j < stNum; j++){
+                if(strcmp(listSV[i].FirstName, listSV[j].FirstName) > 0) swap(&listSV[i], &listSV[j]);
+            }
+        }
+        printf("\n-----------------------------------------\n");
+        printf("This list was sorted by name\n");
+        printf("-----------------------------------------\n");
+    }
+    else{
+        printf("\n-----------------------------------------\n");
+        printf("The sorting list by name was cancelled\n");
+        printf("-----------------------------------------\n");
+    }
+    system("pause");
 }
 
 void printAll()

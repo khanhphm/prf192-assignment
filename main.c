@@ -149,7 +149,19 @@ void sortName()
 
 void printAll()
 {
-    // Enter main part of function
+    system("cls");
+    printf("%-10s %-20s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
+    printf("====================================================\n");
+    int i;
+    for (i = 0; i < stNum; i++)
+    {
+        char fullName[50] = "";
+        strcat(fullName, listSV[i].FirstName);
+        strcat(fullName, " ");
+        strcat(fullName, listSV[i].LastName);
+        printf("%-10s %-20s %-8s %-10.2f\n", listSV[i].IDStudent, fullName, listSV[i].Gender, listSV[i].FinalPoint);
+    }
+    system("pause");
 }
 void printId()
 {

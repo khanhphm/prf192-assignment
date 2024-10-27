@@ -6,9 +6,9 @@
 typedef struct sinhVien{
     char IDStudent[10];
     char LastName[20];
-    char firtName[10];
-    char sex[5];
-    int finalPoint;
+    char FirtName[10];
+    char Gender[5];
+    int FinalPoint;
 } SV;
 
 void addStudent();

@@ -150,8 +150,8 @@ void sortName()
 void printAll()
 {
     system("cls");
-    printf("%-10s %-20s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
-    printf("====================================================\n");
+    printf("%-10s %-30s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
+    printf("==========================================================\n");
     int i;
     for (i = 0; i < stNum; i++)
     {
@@ -159,23 +159,62 @@ void printAll()
         strcat(fullName, listSV[i].FirstName);
         strcat(fullName, " ");
         strcat(fullName, listSV[i].LastName);
-        printf("%-10s %-20s %-8s %-10.2f\n", listSV[i].IDStudent, fullName, listSV[i].Gender, listSV[i].FinalPoint);
+        printf("%-10s %-30s %-8s %-10.2f\n", listSV[i].IDStudent, fullName, listSV[i].Gender, listSV[i].FinalPoint);
     }
     system("pause");
 }
 void printId()
-{
-    // Enter main part of function
+{	
+	system("cls");
+    char id[10];
+    printf("Insert ID student: ");
+    gets(id);
+    int i;
+    printf("%-10s %-30s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
+    printf("===========================================================\n");
+    for(i=0;i<stNum;i++) {
+    	if(strcmp(id,listSV[i].IDStudent)==0) {
+    		char fullName[50] = "";
+        	strcat(fullName, listSV[i].FirstName);
+        	strcat(fullName, " ");
+        	strcat(fullName, listSV[i].LastName);
+        	printf("%-10s %-30s %-8s %-10.2f\n", listSV[i].IDStudent, fullName, listSV[i].Gender, listSV[i].FinalPoint);
+				
+		}
+    	
+	}
+    system("pause");
 }
 
 void printGrade()
 {
-    // Enter main part of function
+	system("cls");
+	float a,b;
+	printf("Insert grade \n");
+	printf("from "); scanf("%f", &a);
+	system("cls");
+	printf("Insert grade \n");
+	printf("from %.2f ", a);
+	printf("to "); scanf("%f", &b);
+	int i;
+	printf("%-10s %-30s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
+    printf("===========================================================\n");
+	for(i=0;i<stNum;i++) {
+		if(listSV[i].FinalPoint>=a && listSV[i].FinalPoint<=b) {
+			char fullName[50] = "";
+        	strcat(fullName, listSV[i].FirstName);
+        	strcat(fullName, " ");
+        	strcat(fullName, listSV[i].LastName);
+        	printf("%-10s %-30s %-8s %-10.2f\n", listSV[i].IDStudent, fullName, listSV[i].Gender, listSV[i].FinalPoint);
+		
+		}
+	}
+	system("pause");
 }
 
 void printAverage()
 {
-    // Enter main part of function
+    
 }
 
 void saveToFile()

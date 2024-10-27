@@ -25,7 +25,7 @@ void saveToFile();
 void readFromFile();
 
 int main(){
-    printf("MENU\n");
+    printf("      ~ MENU ~\n");
     printf(" 1. Add student\n");
     printf(" 2. Edit student grade\n");
     printf(" 3. Edit student name\n");

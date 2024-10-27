@@ -6,9 +6,9 @@
 typedef struct sinhVien{
     char IDStudent[10];
     char LastName[20];
-    char FirtName[10];
+    char FirstName[10];
     char Gender[5];
-    int FinalPoint;
+    float FinalPoint;
 } SV;
 
 SV listSV[];
@@ -108,7 +108,17 @@ void sortName(){
 }
 
 void printAll(){
-    // Enter main part of function
+    printf("%-10s %-20s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
+    printf("====================================================\n");
+    int i;
+    for(i=0;i<stNum;i++) {
+    	char fullName[50]="";
+    	strcat(fullName,listSV[i].FirstName);
+    	strcat(fullName," ");
+		strcat(fullName,listSV[i].LastName); 
+        printf("%-10s %-20s %-8s %-10.2f\n", listSV[i].IDStudent,fullName,listSV[i].Gender,listSV[i].FinalPoint);
+
+	}
 }
 void printId(){
     // Enter main part of function

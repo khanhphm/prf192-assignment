@@ -36,7 +36,7 @@ int main(){
     printf(" 8. Print out list by ID\n");
     printf(" 9. Print out list by grade\n");
     printf("10. Print out average, highest, lowest grade\n");
-    printf(" Other to Exit\n");
+    printf(" 0. Exit\n");
     
     int opt;
     do{

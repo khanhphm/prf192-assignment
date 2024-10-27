@@ -10,7 +10,7 @@ typedef struct sinhVien
     char IDStudent[10];
     char LastName[20];
     char FirstName[10];
-    char Gender[5];
+    char Gender[1];
     float FinalPoint;
 } SV;
 
@@ -106,7 +106,7 @@ void addStudent()
     gets(newSt.LastName);
     printf("First name: ");
     gets(newSt.FirstName);
-    printf("Gender(Male|Female): ");
+    printf("Gender(M|F): ");
     gets(newSt.Gender);
     printf("Final Point: ");
     scanf("%f", &newSt.FinalPoint);
@@ -329,7 +329,7 @@ void readFromFile()
         while (fgets(buffer, sizeof(buffer), file) != NULL)
         {
             SV st;
-            sscanf(buffer, "%10[^,],%20[^,],%10[^,],%5[^,],%f", &st.IDStudent, &st.LastName, &st.FirstName, &st.Gender, &st.FinalPoint);
+            sscanf(buffer, "%10[^,],%20[^,],%10[^,],%1[^,],%f", &st.IDStudent, &st.LastName, &st.FirstName, &st.Gender, &st.FinalPoint);
 
             listSV[stNum] = st;
 

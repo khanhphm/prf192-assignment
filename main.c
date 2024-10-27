@@ -1,9 +1,10 @@
-#include<stdio.h>
-#include<string.h>
-#include<ctype.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
 
-typedef struct sinhVien{
+typedef struct sinhVien
+{
     char IDStudent[10];
     char LastName[20];
     char FirstName[10];
@@ -24,7 +25,8 @@ void printId();
 void printGrade();
 void printAverage();
 
-int main(){
+int main()
+{
     printf("      ~ MENU ~\n");
     printf(" 1. Add student\n");
     printf(" 2. Edit student grade\n");
@@ -37,97 +39,107 @@ int main(){
     printf(" 9. Print out list by grade\n");
     printf("10. Print out average, highest, lowest grade\n");
     printf(" 0. Exit\n");
-    
-    int opt;
-    do{
-        printf("Please Choose: ");
-        scanf("%d",&opt);
 
-        switch(opt){
-            case 1:
-                addStudent();
-                break;
-            case 2:
-                editGrade();
-                break;
-            case 3:
-                editName();
-                break;
-            case 4:
-                removeStudent();
-                break;
-            case 5:
-                sortGrade();
-                break;
-            case 6:
-                sortName();
-                break;
-            case 7:
-                printAll();
-                break;
-            case 8:
-                printId();
-                break;
-            case 9:
-                printGrade();
-                break;
-            case 10:
-                printAverage();
-                break;
-            default:
-                break;
+    int opt;
+    do
+    {
+        printf("Please Choose: ");
+        scanf("%d", &opt);
+
+        switch (opt)
+        {
+        case 1:
+            addStudent();
+            break;
+        case 2:
+            editGrade();
+            break;
+        case 3:
+            editName();
+            break;
+        case 4:
+            removeStudent();
+            break;
+        case 5:
+            sortGrade();
+            break;
+        case 6:
+            sortName();
+            break;
+        case 7:
+            printAll();
+            break;
+        case 8:
+            printId();
+            break;
+        case 9:
+            printGrade();
+            break;
+        case 10:
+            printAverage();
+            break;
+        default:
+            break;
         }
 
-    }while(opt!=0);
+    } while (opt != 0);
 }
 
-void addStudent(){
+void addStudent()
+{
     // Enter main part of function
 }
-void editGrade(){
-    // Enter main part of function
-}
-
-void editName(){
+void editGrade()
+{
     // Enter main part of function
 }
 
-void removeStudent(){
+void editName()
+{
+    // Enter main part of function
+}
+
+void removeStudent()
+{
     int studentId;
-    scanf("%d",studentId);
-    
+    scanf("%d", studentId);
 }
 
-
-void sortGrade(){
+void sortGrade()
+{
     // Enter main part of function
 }
 
-void sortName(){
+void sortName()
+{
     // Enter main part of function
 }
 
-void printAll(){
+void printAll()
+{
     printf("%-10s %-20s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
     printf("====================================================\n");
     int i;
-    for(i=0;i<stNum;i++) {
-    	char fullName[50]="";
-    	strcat(fullName,listSV[i].FirstName);
-    	strcat(fullName," ");
-		strcat(fullName,listSV[i].LastName); 
-        printf("%-10s %-20s %-8s %-10.2f\n", listSV[i].IDStudent,fullName,listSV[i].Gender,listSV[i].FinalPoint);
-
-	}
+    for (i = 0; i < stNum; i++)
+    {
+        char fullName[50] = "";
+        strcat(fullName, listSV[i].FirstName);
+        strcat(fullName, " ");
+        strcat(fullName, listSV[i].LastName);
+        printf("%-10s %-20s %-8s %-10.2f\n", listSV[i].IDStudent, fullName, listSV[i].Gender, listSV[i].FinalPoint);
+    }
 }
-void printId(){
+void printId()
+{
     // Enter main part of function
 }
 
-void printGrade(){
+void printGrade()
+{
     // Enter main part of function
 }
 
-void printAverage(){
+void printAverage()
+{
     // Enter main part of function
 }

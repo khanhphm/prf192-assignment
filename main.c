@@ -4,11 +4,11 @@
 #include<stdlib.h>
 
 typedef struct sinhVien{
-    char iDStudent[10];
-    char lastName[20];
-    char firtName[10];
-    char gender[5];
-    int finalPoint;
+    char IDStudent[10];
+    char LastName[20];
+    char FirtName[10];
+    char Gender[5];
+    int FinalPoint;
 } SV;
 
 void addStudent();

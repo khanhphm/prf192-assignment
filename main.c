@@ -207,6 +207,7 @@ void addStudent()
     SV newSt;
     printf("Student ID: ");
     gets(newSt.IDStudent);
+
     printf("Last name: ");
     gets(newSt.LastName);
     printf("First name: ");
@@ -221,6 +222,10 @@ void addStudent()
     fflush(stdin);
     printf("Are you sure? (Y/N): ");
     scanf("%c", &opt);
+    strupr(newSt.LastName);
+    strupr(newSt.FirstName);
+    strupr(newSt.Gender);
+    strupr(newSt.IDStudent);
 
     if (opt == 'y')
     {
@@ -247,6 +252,7 @@ int searchById()
     char id[10];
     printf("Search by ID: ");
     gets(id);
+    strupr(id);
 
     int i;
     for (i = 0; i < stNum; i++)
@@ -307,6 +313,7 @@ void updateStudent()
 
         printf("New ID: ");
         gets(currentSt.IDStudent);
+        strupr(currentSt.IDStudent);
         break;
     case 2:
 
@@ -314,12 +321,14 @@ void updateStudent()
         gets(currentSt.LastName);
         printf("New first name: ");
         gets(currentSt.FirstName);
-
+        strupr(currentSt.LastName);
+        strupr(currentSt.FirstName);
         break;
     case 3:
 
         printf("New gender: ");
         gets(currentSt.Gender);
+        strupr(currentSt.Gender);
 
         break;
     default:
@@ -469,6 +478,7 @@ void printId()
     char id[10];
     printf("Insert ID student: ");
     gets(id);
+    strupr(id);
     int i;
     printf("%-10s %-30s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
     printf("===========================================================\n");
@@ -491,12 +501,9 @@ void printGrade()
     system("cls");
     float a, b;
     printf("Insert grade \n");
-    printf("from ");
+    printf("From: ");
     scanf("%f", &a);
-    system("cls");
-    printf("Insert grade \n");
-    printf("from %.2f ", a);
-    printf("to ");
+    printf("To: ");
     scanf("%f", &b);
     int i;
     printf("%-10s %-30s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");

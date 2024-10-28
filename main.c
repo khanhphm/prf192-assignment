@@ -17,6 +17,8 @@ typedef struct sinhVien
 SV listSV[MAX];
 int stNum = 0;
 
+char fileAddress[255];
+
 void addStudent();
 void updateStudent();
 void removeStudent();
@@ -28,10 +30,10 @@ void printGrade();
 void printAverage();
 void saveToFile();
 void readFromFile();
-
+void handleOpenFile();
+void handleCreateFile();
+void handleRemoveFile();
 void handleFile();
-
-char fileAddress[255];
 
 int main(int argc, char *argv[])
 {
@@ -45,30 +47,26 @@ int main(int argc, char *argv[])
             printf("      ~ MENU ~\n");
             printf(" 1. New file\n");
             printf(" 2. Open file\n");
+            printf(" 3. Delete file\n");
             printf(" 0. To Exit\n");
             printf("Please Choose: ");
             scanf("%d", &opt);
             fflush(stdin);
-
-            system("cls");
-            printf("File address: ");
-            gets(fileAddress);
-            printf("%s\n", fileAddress);
+            stNum = 0;
 
             switch (opt)
             {
             case 1:
-                saveToFile();
-                printf("New file is created successful!!\n");
-                system("pause");
-                handleFile();
+                handleCreateFile();
                 break;
+
             case 2:
-                readFromFile();
-                printf("Open file successful!!\n");
-                system("pause");
-                handleFile();
+                handleOpenFile();
                 break;
+            case 3:
+                handleRemoveFile();
+                break;
+
             default:
                 system("cls");
                 break;
@@ -83,6 +81,62 @@ int main(int argc, char *argv[])
         system("pause");
         handleFile();
     }
+}
+
+void handleCreateFile()
+{
+
+    char fileType[4] = ".csv";
+    char fileName[10];
+    char file[255] = "./data/";
+
+    system("cls");
+    printf("File name: ");
+    gets(fileName);
+    strcat(file, fileName);
+    strcat(file, fileType);
+    strcpy(fileAddress, file);
+
+    saveToFile();
+    system("pause");
+    handleFile();
+}
+
+void handleOpenFile()
+{
+
+    char fileType[4] = ".csv";
+    char fileName[10];
+    char file[255] = "./data/";
+    system("cls");
+    printf("File name: ");
+    scanf("%s", &fileName);
+    strcat(file, fileName);
+    strcat(file, fileType);
+    strcpy(fileAddress, file);
+
+    readFromFile();
+    printf("Open file successful!!\n");
+    system("pause");
+    handleFile();
+}
+
+void handleRemoveFile()
+{
+
+    char fileType[4] = ".csv";
+    char fileName[10];
+    char file[255] = ".\\data\\";
+    char delCmd[20] = "del ";
+
+    system("cls");
+    printf("File name: ");
+    scanf("%s", &fileName);
+    strcat(file, fileName);
+    strcat(file, fileType);
+    strcat(delCmd, file);
+    system(delCmd);
+    system("pause");
 }
 
 void handleFile()
@@ -570,7 +624,7 @@ void saveToFile()
     int i;
     for (i = 0; i < stNum; i++)
     {
-        fprintf(file, "%s,%s,%s,%s,%.1f,\n", listSV[i].IDStudent, listSV[i].LastName, listSV[i].FirstName, listSV[i].Gender, listSV[i].FinalPoint);
+        fprintf(file, "%s,%s,%s,%s,%.1f\n", listSV[i].IDStudent, listSV[i].LastName, listSV[i].FirstName, listSV[i].Gender, listSV[i].FinalPoint);
     }
 
     fclose(file);

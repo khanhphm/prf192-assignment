@@ -29,9 +29,64 @@ void printAverage();
 void saveToFile();
 void readFromFile();
 
-int main()
+void handleFile();
+
+char fileAddress[255];
+
+int main(int argc, char *argv[])
 {
 
+    if (argc < 2)
+    {
+        int opt;
+        do
+        {
+            system("cls");
+            printf("      ~ MENU ~\n");
+            printf(" 1. New file\n");
+            printf(" 2. Open file\n");
+            printf(" 0. To Exit\n");
+            printf("Please Choose: ");
+            scanf("%d", &opt);
+            fflush(stdin);
+
+            system("cls");
+            printf("File address: ");
+            gets(fileAddress);
+            printf("%s\n", fileAddress);
+
+            switch (opt)
+            {
+            case 1:
+                saveToFile();
+                printf("New file is created successful!!\n");
+                system("pause");
+                handleFile();
+                break;
+            case 2:
+                readFromFile();
+                printf("Open file successful!!\n");
+                system("pause");
+                handleFile();
+                break;
+            default:
+                system("cls");
+                break;
+            }
+
+        } while (opt != 0);
+    }
+    else
+    {
+        strcpy(fileAddress, argv[1]);
+        printf("Handling at: %s\n", fileAddress);
+        system("pause");
+        handleFile();
+    }
+}
+
+void handleFile()
+{
     int opt;
     do
     {
@@ -87,10 +142,6 @@ int main()
         }
 
     } while (opt != 0);
-}
-
-void nameFormat(char *s)
-{
 }
 
 void addStudent()
@@ -509,7 +560,7 @@ void printAverage()
 
 void saveToFile()
 {
-    FILE *file = fopen("data.csv", "w");
+    FILE *file = fopen(fileAddress, "w");
     if (file == NULL)
     {
         printf("OPEN FILE TO WRITE ERROR");
@@ -528,7 +579,7 @@ void saveToFile()
 void readFromFile()
 {
     stNum = 0;
-    FILE *file = fopen("data.csv", "r");
+    FILE *file = fopen(fileAddress, "r");
     if (file != NULL)
     {
         char buffer[100];

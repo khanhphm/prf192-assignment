@@ -106,7 +106,7 @@ void addStudent()
     gets(newSt.LastName);
     printf("First name: ");
     gets(newSt.FirstName);
-    printf("Gender: ");
+    printf("Gender(M|F): ");
     gets(newSt.Gender);
     printf("Final Point: ");
     scanf("%f", &newSt.FinalPoint);
@@ -136,22 +136,128 @@ void addStudent()
 
     return;
 }
-void editGrade()
+
+int searchById()
 {
-    // Enter main part of function
+    char id[10];
+    printf("Search by ID: ");
+    gets(id);
+
+    int i;
+    for (i = 0; i < stNum; i++)
+    {
+        if (strcmp(listSV[i].IDStudent, id) == 0)
+        {
+            system("cls");
+            printf("STUDENT INFORMATION");
+            printf("\n-----------------------------------------\n");
+            printf("%-10s %-20s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
+            char fullName[50] = "";
+            strcat(fullName, listSV[i].FirstName);
+            strcat(fullName, " ");
+            strcat(fullName, listSV[i].LastName);
+            printf("%-10s %-20s %-8s %-10.2f\n", listSV[i].IDStudent, fullName, listSV[i].Gender, listSV[i].FinalPoint);
+            printf("\n-----------------------------------------\n");
+            return i;
+        }
+    }
+    printf("\nID is not found!!\n");
+    return -1;
 }
 
-void editName()
+void updateStudent()
 {
-    // Enter main part of function
+    system("cls");
+    printf("UPDATE STUDENT INFORMATION");
+    printf("\n-----------------------------------------\n");
+    int i = searchById();
+    if (i == -1)
+    {
+        system("pause");
+        return;
+    }
+
+    SV currentSt = listSV[i];
+    printf("1. Edit ID\n");
+    printf("2. Edit name\n");
+    printf("3. Edit gender\n");
+    printf("\nChoose option: ");
+    int opt;
+
+    scanf("%d", &opt);
+    fflush(stdin);
+    system("cls");
+    printf("UPDATE STUDENT INFORMATION");
+    char fullName[50] = "";
+    strcat(fullName, currentSt.FirstName);
+    strcat(fullName, " ");
+    strcat(fullName, currentSt.LastName);
+    printf("\n-----------------------------------------\n");
+    printf("%-10s %-20s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
+    printf("%-10s %-20s %-8s %-10.2f\n", currentSt.IDStudent, fullName, currentSt.Gender, currentSt.FinalPoint);
+    printf("\n-----------------------------------------\n");
+    switch (opt)
+    {
+    case 1:
+
+        printf("New ID: ");
+        gets(currentSt.IDStudent);
+        break;
+    case 2:
+
+        printf("New last name: ");
+        gets(currentSt.LastName);
+        printf("New first name: ");
+        gets(currentSt.FirstName);
+
+        break;
+    case 3:
+
+        printf("New gender: ");
+        gets(currentSt.Gender);
+
+        break;
+    default:
+        break;
+    }
+
+    printf("\n-----------------------------------------\n");
+
+    printf("Are you sure? (y/n)");
+    scanf("%c", &opt);
+    if (opt == 'y')
+    {
+        listSV[i] = currentSt;
+        saveToFile();
+    }
+
+    system("pause");
+    return;
 }
 
 void removeStudent()
 {
-    int studentId;
-    scanf("%d", studentId);
+    system("cls");
+    printf("REMOVE STUDENT");
+    printf("\n-----------------------------------------\n");
+    int id = searchById();
+    char opt;
+    printf("Press Y to remove %s: ", listSV[id].IDStudent);
+    scanf("%c", &opt);
+    if (opt == 'y')
+    {
+        int i;
+        for (i = id; i < stNum - 1; i++)
+        {
+            listSV[i] = listSV[i + 1];
+        }
+        stNum--;
+        saveToFile();
+    }
+    return;
 }
-void swap(SV *sv1, SV *sv2){
+void swap(SV *sv1, SV *sv2)
+{
     SV tam = *sv1;
     *sv1 = *sv2;
     *sv2 = tam;
@@ -252,17 +358,124 @@ void printAll()
     }
     system("pause");
 }
-
 void printId()
 {
-    // Enter main part of function
+    system("cls");
+    char id[10];
+    printf("Insert ID student: ");
+    gets(id);
+    int i;
+    printf("%-10s %-30s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
+    printf("===========================================================\n");
+    for (i = 0; i < stNum; i++)
+    {
+        if (strcmp(id, listSV[i].IDStudent) == 0)
+        {
+            char fullName[50] = "";
+            strcat(fullName, listSV[i].FirstName);
+            strcat(fullName, " ");
+            strcat(fullName, listSV[i].LastName);
+            printf("%-10s %-30s %-8s %-10.2f\n", listSV[i].IDStudent, fullName, listSV[i].Gender, listSV[i].FinalPoint);
+        }
+    }
+    system("pause");
 }
 
 void printGrade()
 {
-    // Enter main part of function
+    system("cls");
+    float a, b;
+    printf("Insert grade \n");
+    printf("from ");
+    scanf("%f", &a);
+    system("cls");
+    printf("Insert grade \n");
+    printf("from %.2f ", a);
+    printf("to ");
+    scanf("%f", &b);
+    int i;
+    printf("%-10s %-30s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
+    printf("===========================================================\n");
+    for (i = 0; i < stNum; i++)
+    {
+        if (listSV[i].FinalPoint >= a && listSV[i].FinalPoint <= b)
+        {
+            char fullName[50] = "";
+            strcat(fullName, listSV[i].FirstName);
+            strcat(fullName, " ");
+            strcat(fullName, listSV[i].LastName);
+            printf("%-10s %-30s %-8s %-10.2f\n", listSV[i].IDStudent, fullName, listSV[i].Gender, listSV[i].FinalPoint);
+        }
+    }
+    system("pause");
 }
+void printAverageGrade()
+{
+    system("cls");
+    float sum = 0;
+    int i;
+    for (i = 0; i < stNum; i++)
+    {
+        sum += listSV[i].FinalPoint;
+    }
+    printf("Average grade: %.2f\n", sum / stNum);
+    system("pause");
+}
+void printHighest()
+{
+    system("cls");
+    float max = 0.00;
+    int i;
+    for (i = 0; i < stNum; i++)
+    {
+        if (max < listSV[i].FinalPoint)
+        {
+            max = listSV[i].FinalPoint;
+        }
+    }
+    printf("%-10s %-30s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
+    printf("===========================================================\n");
+    for (i = 0; i < stNum; i++)
+    {
+        if (max == listSV[i].FinalPoint)
+        {
+            char fullName[50] = "";
 
+            strcat(fullName, listSV[i].FirstName);
+            strcat(fullName, " ");
+            strcat(fullName, listSV[i].LastName);
+            printf("%-10s %-30s %-8s %-10.2f\n", listSV[i].IDStudent, fullName, listSV[i].Gender, listSV[i].FinalPoint);
+        }
+    }
+    system("pause");
+}
+void printLowest()
+{
+    system("cls");
+    float min = 10.00;
+    int i;
+    for (i = 0; i < stNum; i++)
+    {
+        if (min > listSV[i].FinalPoint)
+        {
+            min = listSV[i].FinalPoint;
+        }
+    }
+    printf("%-10s %-30s %-8s %-10s\n", "ID", "Full Name", "Gender", "Grade");
+    printf("===========================================================\n");
+    for (i = 0; i < stNum; i++)
+    {
+        if (min == listSV[i].FinalPoint)
+        {
+            char fullName[50] = "";
+            strcat(fullName, listSV[i].FirstName);
+            strcat(fullName, " ");
+            strcat(fullName, listSV[i].LastName);
+            printf("%-10s %-30s %-8s %-10.2f\n", listSV[i].IDStudent, fullName, listSV[i].Gender, listSV[i].FinalPoint);
+        }
+    }
+    system("pause");
+}
 void printAverage()
 {
 
@@ -320,10 +533,10 @@ void readFromFile()
     {
         char buffer[100];
 
-    while (fgets(buffer, sizeof(buffer), file) != NULL)
-    {
-        SV st;
-        sscanf(buffer, "%10[^,],%20[^,],%10[^,],%5[^,],%f", &st.IDStudent, &st.LastName, &st.FirstName, &st.Gender, &st.FinalPoint);
+        while (fgets(buffer, sizeof(buffer), file) != NULL)
+        {
+            SV st;
+            sscanf(buffer, "%10[^,],%20[^,],%10[^,],%1[^,],%f", &st.IDStudent, &st.LastName, &st.FirstName, &st.Gender, &st.FinalPoint);
 
             listSV[stNum] = st;
 
